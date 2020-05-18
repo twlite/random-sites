@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
   <head>
@@ -31,10 +30,42 @@
     <!-- CONTENT -->
     <div class="container">
       <div class="jumbotron">
-        <h1 class="text-center">Covid19 Stats</h1>
+        <h1 class="text-center">Covid19 Stats Of Nepal</h1>
         <hr>
-        
+        <div class="data"></div>
       </div>
     </div>
+  <!-- JavaScript -->
+  <script>
+    var url = "https://corona.lmao.ninja/v2/countries/nepal";
+    
+    fetch(url)
+    .then(res => res.json())
+    .then(body => {
+      var id = document.getElementById("data");
+      id.innerHTML = `<div class="table-responsive">
+      <table class="table table-bordered table-dark">
+  <thead>
+    <tr>
+      <th scope="col">S.N.</th>
+      <th scope="col">Total Cases</th>
+      <th scope="col">Cases Today</th>
+      <th scope="col">Deaths</th>
+      <th scope="col">Recovered</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">1.</th>
+      <td>${body.cases.toLocaleString()}</td>
+      <td>${body.todayCases.toLocaleString()}</td>
+      <td>${body.deaths.toLocaleString()}</td>
+      <td>${body.recovered.toLocaleString()}</td>
+    </tr>
+  </tbody>
+</table>
+      </div>`;
+    });
+  </script>
   </body>
 </html>
