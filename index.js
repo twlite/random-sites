@@ -85,6 +85,8 @@ This package can do all the functions of normal **[ytdl-core](https://npmjs.com/
 - **[AndrozDev](https://discord.gg/Qreejcu)**
 `;
 
-var converter = new showdown.Converter();
+var converter = new showdown.Converter({ 
+    extensions: [showdownHighlight] 
+});
 var html = converter.makeHtml(markdown);
 document.getElementById("data").innerHTML = html;
