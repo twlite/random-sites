@@ -19,7 +19,7 @@ npm i discord-ytdl-core
 **[https://ffmpeg.org](https://ffmpeg.org)**
 
 - Install FFmpeg from npmjs: 
-`npm i -g ffmpeg-static`
+\`npm i -g ffmpeg-static\`
 
 - Tutorial by **[@iCrawl](https://github.com/icrawl)**: 
 **[https://www.youtube.com/watch?v=SW-iKrT_nJs](https://www.youtube.com/watch?v=SW-iKrT_nJs)**
