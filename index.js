@@ -1,9 +1,9 @@
 var markdown = `# Installing
-<hr>
+<hr><b>
 \`
 npm i discord-ytdl-core
 \`
-<hr>
+</b><hr>
 
 [https://www.npmjs.com/package/discord-ytdl-core](https://www.npmjs.com/package/discord-ytdl-core)
 
