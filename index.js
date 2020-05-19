@@ -2,9 +2,9 @@ var markdown = `# discord-ytdl-core
 Simple ytdl wrapper for discord bots with custom ffmpeg args support.
 
 <hr>
-\`\`\`sh
+\`
 npm i discord-ytdl-core
-\`\`\`
+\`
 <hr>
 
 [https://www.npmjs.com/package/discord-ytdl-core](https://www.npmjs.com/package/discord-ytdl-core)
@@ -50,7 +50,7 @@ VoiceConnection.play(stream, { type: "opus" });
 <hr>
 \`\`\`js
 let url = "https://www.youtube.com/watch?v=2lNT6AcKYl8";
-let stream = ytdl(url, { filter: "audioonly", quality: "highestaudio" }); // seek to 10s
+let stream = ytdl(url, { filter: "audioonly", quality: "highestaudio" }); // filter, quality
 VoiceConnection.play(stream, { type: "opus" });
 
 \`\`\`
