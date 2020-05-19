@@ -129,6 +129,6 @@ showdown.extension('highlight', => {
     }
   }];
 });
-var converter = new showdown.Converter({ extensions: ["highlight"] });
+var converter = new showdown.Converter(/*{ extensions: ["highlight"] }*/);
 var html = converter.makeHtml(markdown);
 document.getElementById("data").innerHTML = html;
