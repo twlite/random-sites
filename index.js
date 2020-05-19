@@ -1,6 +1,4 @@
-var markdown = `# discord-ytdl-core
-Simple ytdl wrapper for discord bots with custom ffmpeg args support.
-
+var markdown = `# Installing
 <hr>
 \`
 npm i discord-ytdl-core
@@ -12,14 +10,25 @@ npm i discord-ytdl-core
 > Please install an Opus engine & FFmpeg before using this package.
 
 ## **Supported Opus Engines:**
-- **[@discordjs/opus](https://npmjs.com/package/@discordjs/opus)** - Best performance
-- **[node-opus](https://npmjs.com/package/node-opus)** - Deprecated
+- **[@discordjs/opus](https://npmjs.com/package/@discordjs/opus)** [Requires WBT]
+- **[node-opus](https://npmjs.com/package/node-opus)** - [Requires WBT]
 - **[opusscript](https://npmjs.com/package/opusscript)**
+ 
+# How To Install FFmpeg
+- Install FFmpeg from the website: 
+**[https://ffmpeg.org](https://ffmpeg.org)**
 
-# Options
+- Install FFmpeg from npmjs: 
+`npm i -g ffmpeg-static`
+
+- Tutorial by **[@iCrawl](https://github.com/icrawl)**: 
+**[https://www.youtube.com/watch?v=SW-iKrT_nJs](https://www.youtube.com/watch?v=SW-iKrT_nJs)**
+
+# Discord YTDL Core Options
 This package provides 2 extra options excluding ytdl-core options.
 They are: \`seek\` & \`encoderArgs\`.
-- seek: This parameter takes the time in seconds. 
+
+- <u>seek</u>: This parameter takes the time in seconds. 
 If this option is provided, it will return the stream from that frame.
 Seek option is provided here because discord.js seek doesn't work for \`ogg/opus\` & \`webm/opus\` stream.
 This option is ignored when the supplied parameter type isn't a number. Time should be provided in seconds.
@@ -33,7 +42,7 @@ VoiceConnection.play(stream, { type: "opus" });
 \`\`\`
 <hr>
 
-- encoderArgs: This parameter takes the Array of FFmpeg arguments.
+- <u>encoderArgs</u>: This parameter takes the Array of FFmpeg arguments.
 Invalid args will throw error and crash the process.
 This option is ignored when the supplied parameter type isn't array. Invalid FFmpeg args might crash the process.
 **Example:**
