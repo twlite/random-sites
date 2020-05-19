@@ -19,14 +19,38 @@ This package provides 2 extra options excluding ytdl-core options.
 They are: \`seek\` & \`encoderArgs\`.
 - seek: This parameter takes the time in seconds. 
 If this option is provided, it will return the stream from that frame.
-Seek option is provided here because discord.js seek doesn't work in \`ogg/opus\` & \`webm/opus\` stream.
-This option is ignored when the supplied parameter type isn't a number.
+Seek option is provided here because discord.js seek doesn't work for \`ogg/opus\` & \`webm/opus\` stream.
+This option is ignored when the supplied parameter type isn't a number. Time should be provided in seconds.
+**Example:**
+
+\`\`\`js
+let url = "https://www.youtube.com/watch?v=2lNT6AcKYl8";
+let stream = ytdl(url, { seek: 10 }); // seek to 10s
+VoiceConnection.play(stream, { type: "opus" });
+
+\`\`\`
 
 - encoderArgs: This parameter takes the Array of FFmpeg arguments.
 Invalid args will throw error and crash the process.
 This option is ignored when the supplied parameter type isn't array. Invalid FFmpeg args might crash the process.
+**Example:**
+
+\`\`\`js
+let url = "https://www.youtube.com/watch?v=2lNT6AcKYl8";
+let stream = ytdl(url, { encoderArgs: ["-af", "bass=g=10"] }); // increase the bass
+VoiceConnection.play(stream, { type: "opus" });
+
+\`\`\`
 
 - Other options are the options for **[ytdl-core](https://npmjs.com/package/ytdl-core)**.
+**Example:**
+
+\`\`\`js
+let url = "https://www.youtube.com/watch?v=2lNT6AcKYl8";
+let stream = ytdl(url, { filter: "audioonly", quality: "highestaudio" }); // seek to 10s
+VoiceConnection.play(stream, { type: "opus" });
+
+\`\`\`
 
 # Example
 
@@ -63,11 +87,11 @@ client.on("message", msg => {
 client.login("TOKEN");
 \`\`\`
 
+# Updating the filters of current stream
+It can be done by using \`seek\` method & \`Dispatcher.streamTime\` of discord.js. You have to re-play the track with new filters and providing the time in seek option. This may cause delay but it will work. We are working to solve this problem in the future.
+
 # Example Bots
 - **[P74Y](https://github.com/Snowflake107/P74Y)**
-
-> **If you have a bot which uses this package, create a Pull Request.**
-
 
 # Other functions
 This package can do all the functions of normal **[ytdl-core](https://npmjs.com/package/ytdl-core)**.
@@ -85,14 +109,14 @@ This package can do all the functions of normal **[ytdl-core](https://npmjs.com/
 - **[AndrozDev](https://discord.gg/Qreejcu)**
 `;
 
-showdown.extension('highlight', function () {
+showdown.extension('highlight', => {
   return [{
     type: "output",
-    filter: function (text, converter, options) {
+    filter: (text, converter, options) => {
       var left = "<pre><code\\b[^>]*>",
           right = "</code></pre>",
           flags = "g";
-      var replacement = function (wholeMatch, match, left, right) {
+      var replacement = (wholeMatch, match, left, right) => {
       	var lang = (left.match(/class=\"([^ \"]+)/) || [])[1];
         left = left.slice(0, 18) + 'hljs ' + left.slice(18);
         if (lang && hljs.getLanguage(lang)) {
