@@ -86,7 +86,7 @@ This package can do all the functions of normal **[ytdl-core](https://npmjs.com/
 `;
 
 var converter = new showdown.Converter({ 
-    extensions: [showdownHighlight] 
+    extensions: ["codehighlight"] 
 });
 var html = converter.makeHtml(markdown);
 document.getElementById("data").innerHTML = html;
