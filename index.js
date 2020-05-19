@@ -85,7 +85,7 @@ This package can do all the functions of normal **[ytdl-core](https://npmjs.com/
 - **[AndrozDev](https://discord.gg/Qreejcu)**
 `;
 
-var hl = showdown.extension('highlight', function () {
+showdown.extension('highlight', function () {
   return [{
     type: "output",
     filter: function (text, converter, options) {
@@ -105,6 +105,6 @@ var hl = showdown.extension('highlight', function () {
     }
   }];
 });
-var converter = new showdown.Converter({ extensions: [hl] });
+var converter = new showdown.Converter({ extensions: ["highlight"] });
 var html = converter.makeHtml(markdown);
 document.getElementById("data").innerHTML = html;
