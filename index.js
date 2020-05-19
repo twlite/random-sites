@@ -5,7 +5,7 @@ Simple ytdl wrapper for discord bots with custom ffmpeg args support.
 \`\`\`sh
 npm i discord-ytdl-core
 \`\`\`
-</hr>
+<hr>
 
 [https://www.npmjs.com/package/discord-ytdl-core](https://www.npmjs.com/package/discord-ytdl-core)
 
