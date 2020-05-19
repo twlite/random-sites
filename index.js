@@ -1,9 +1,11 @@
 var markdown = `# discord-ytdl-core
 Simple ytdl wrapper for discord bots with custom ffmpeg args support.
 
+<hr>
 \`\`\`sh
 npm i discord-ytdl-core
 \`\`\`
+</hr>
 
 [https://www.npmjs.com/package/discord-ytdl-core](https://www.npmjs.com/package/discord-ytdl-core)
 
@@ -22,38 +24,40 @@ If this option is provided, it will return the stream from that frame.
 Seek option is provided here because discord.js seek doesn't work for \`ogg/opus\` & \`webm/opus\` stream.
 This option is ignored when the supplied parameter type isn't a number. Time should be provided in seconds.
 **Example:**
-
+<hr>
 \`\`\`js
 let url = "https://www.youtube.com/watch?v=2lNT6AcKYl8";
 let stream = ytdl(url, { seek: 10 }); // seek to 10s
 VoiceConnection.play(stream, { type: "opus" });
 
 \`\`\`
+<hr>
 
 - encoderArgs: This parameter takes the Array of FFmpeg arguments.
 Invalid args will throw error and crash the process.
 This option is ignored when the supplied parameter type isn't array. Invalid FFmpeg args might crash the process.
 **Example:**
-
+<hr>
 \`\`\`js
 let url = "https://www.youtube.com/watch?v=2lNT6AcKYl8";
 let stream = ytdl(url, { encoderArgs: ["-af", "bass=g=10"] }); // increase the bass
 VoiceConnection.play(stream, { type: "opus" });
 
 \`\`\`
-
+<hr>
 - Other options are the options for **[ytdl-core](https://npmjs.com/package/ytdl-core)**.
 **Example:**
-
+<hr>
 \`\`\`js
 let url = "https://www.youtube.com/watch?v=2lNT6AcKYl8";
 let stream = ytdl(url, { filter: "audioonly", quality: "highestaudio" }); // seek to 10s
 VoiceConnection.play(stream, { type: "opus" });
 
 \`\`\`
+<hr>
 
 # Example
-
+<hr>
 \`\`\`js
 const ytdl = require("discord-ytdl-core");
 const Discord = require("discord.js");
@@ -86,6 +90,7 @@ client.on("message", msg => {
 
 client.login("TOKEN");
 \`\`\`
+<hr>
 
 # Updating the filters of current stream
 It can be done by using \`seek\` method & \`Dispatcher.streamTime\` of discord.js. You have to re-play the track with new filters and providing the time in seek option. This may cause delay but it will work. We are working to solve this problem in the future.
