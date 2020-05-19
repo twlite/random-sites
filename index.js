@@ -108,7 +108,7 @@ This package can do all the functions of normal **[ytdl-core](https://npmjs.com/
 - **[Snowflake Development ❄️](https://discord.gg/uqB8kxh)**
 - **[AndrozDev](https://discord.gg/Qreejcu)**
 `;
-
+/*
 showdown.extension('highlight', => {
   return [{
     type: "output",
@@ -129,6 +129,7 @@ showdown.extension('highlight', => {
     }
   }];
 });
+*/
 var converter = new showdown.Converter(/*{ extensions: ["highlight"] }*/);
 var html = converter.makeHtml(markdown);
 document.getElementById("data").innerHTML = html;
