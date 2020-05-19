@@ -85,6 +85,26 @@ This package can do all the functions of normal **[ytdl-core](https://npmjs.com/
 - **[AndrozDev](https://discord.gg/Qreejcu)**
 `;
 
-var converter = new showdown.Converter();
+var hl = showdown.extension('highlight', function () {
+  return [{
+    type: "output",
+    filter: function (text, converter, options) {
+      var left = "<pre><code\\b[^>]*>",
+          right = "</code></pre>",
+          flags = "g";
+      var replacement = function (wholeMatch, match, left, right) {
+      	var lang = (left.match(/class=\"([^ \"]+)/) || [])[1];
+        left = left.slice(0, 18) + 'hljs ' + left.slice(18);
+        if (lang && hljs.getLanguage(lang)) {
+          return left + hljs.highlight(lang, match).value + right;
+        } else {
+          return left + hljs.highlightAuto(match).value + right;
+        }
+      };
+      return showdown.helper.replaceRecursiveRegExp(text, replacement, left, right, flags);
+    }
+  }];
+});
+var converter = new showdown.Converter({ extensions: [hl] });
 var html = converter.makeHtml(markdown);
 document.getElementById("data").innerHTML = html;
