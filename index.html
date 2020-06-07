@@ -48,13 +48,17 @@
     function get() {
       var song = document.getElementById("song").value;
       if (!song) return alert("Please enter something!");
-      document.getElementById("data").innerHTML = `Searching "${song}"…`
-    fetch(url+song.toLowerCase(), {
+      let pos = document.getElementById("data");
+      pos.innerHTML = `Searching "${song}"…`
+    fetch(url+song, {
         mode: 'no-cors'
     })
     .then(res => res.json())
     .then(body => {
-      if (body.error) return alert("No result found!");
+      if (body.error) {
+          pos.innerHTML = "";
+          return alert("No result found!");
+      }
       var id = document.getElementById("data");
       id.innerHTML = `
       <center><img src="${body.thumbnail.genius}"></center>
@@ -64,7 +68,10 @@
       <a class="btn btn-primary" href="${body.links.genius}">View</a>
 `;
     })
-    .catch(e => alert("Something went wrong!\n"+e));
+    .catch(e => {
+         alert("Something went wrong!\n"+e.message)
+         pos.innerHTML = "";
+     });
     };
   </script>
   </body>
