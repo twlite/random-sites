@@ -32,19 +32,25 @@
       <div class="jumbotron">
         <h1 class="text-center">Covid19 Stats Of Nepal</h1>
         <hr>
-        <div id="data"></div>
+        <div class="data">
+            <h1 class="display-4" id="name"></h1>
+            <p class="lead" id="timer">Refreshing in <b id="sec">30</b> seconds...</p>
+            <hr class="my-4">
+            <p>#StayHome</p>
+            <a class="btn btn-primary btn-lg" href="index.html" role="button">Refresh</a>
+        </div>
       </div>
     </div>
   <!-- JavaScript -->
   <script>
     var url = "https://corona.lmao.ninja/v2/countries/nepal";
-    
+    function get() {
     fetch(url)
     .then(res => res.json())
     .then(body => {
       var id = document.getElementById("data");
       id.innerHTML = `<div class="table-responsive">
-      <table class="table table-bordered table-dark">
+      <table class="table table-bordered">
   <thead>
     <tr>
       <th scope="col">S.N.</th>
@@ -66,6 +72,21 @@
 </table>
       </div>`;
     });
+    };
+
+    setInterval(() => {
+        let i = document.getElementById("timer");
+        let text = (time) => {
+            return i.innerText = `Refreshing in <b id="sec">${time}</b> second${time == 1 ? "" : "s"}...`;
+        };
+        let sec = document.getElementById("sec").innerText;
+        if (parseInt(sec) - 1 < 0) {
+           get();
+           text(30);
+        } else {
+           text(parseInt(sec) - 1);
+        }
+    },1000);
   </script>
   </body>
 </html>
