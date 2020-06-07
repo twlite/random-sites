@@ -46,9 +46,9 @@
     document.getElementById("button").addEventListener("click", (event) => event.preventDefault());
     var url = "https://some-random-api.ml/lyrics?title=";
     function get() {
-      document.getElementById("data").innerHTML = `Searching "${song}"…`
       var song = document.getElementById("song").value;
       if (!song) return alert("Please enter something!");
+      document.getElementById("data").innerHTML = `Searching "${song}"…`
     fetch(url+song)
     .then(res => res.json())
     .then(body => {
