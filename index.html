@@ -38,7 +38,7 @@
             <hr class="my-4">
             <div id="data"></div>
             <hr class="my-4">
-            <p>#StayHome</p>
+            <p id="lastUpdate"></p>
             <a class="btn btn-primary btn-lg" href="index.html" role="button">Refresh</a>
         </div>
       </div>
@@ -50,6 +50,7 @@
     fetch(url)
     .then(res => res.json())
     .then(body => {
+      document.getElementById("lastUpdate").innerText = new Date(body.updated).toLocaleString("en-Us", { timeZone: "asia/kathmandu" });
       var id = document.getElementById("data");
       id.innerHTML = `<div class="table-responsive">
       <table class="table table-bordered">
