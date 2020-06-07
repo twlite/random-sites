@@ -1,4 +1,4 @@
-# lyricz
+# lyrics
 Simple website to display lyrics of the given song.
 check it **[here](https://easylyrics.netlify.app)**
 
