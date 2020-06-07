@@ -50,7 +50,7 @@
     fetch(url)
     .then(res => res.json())
     .then(body => {
-      document.getElementById("lastUpdate").innerText = new Date(body.updated).toLocaleString("en-Us", { timeZone: "asia/kathmandu" });
+      document.getElementById("lastUpdate").innerText = "Last Update at: "+new Date(body.updated).toLocaleString("en-Us", { timeZone: "asia/kathmandu" });
       var id = document.getElementById("data");
       id.innerHTML = `<div class="table-responsive">
       <table class="table table-bordered">
