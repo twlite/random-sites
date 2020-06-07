@@ -1,6 +1,6 @@
-# covid19
-Simple website to display covid-19 stats of **Nepal**.
-check it **[here](https://covid-nepal.netlify.app)**
+# lyricz
+Simple website to display lyrics of the given song.
+check it **[here](https://easylyrics.netlify.app)**
 
 # Made With
 - HTML
