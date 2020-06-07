@@ -38,7 +38,7 @@
             <button onclick="get()" id="button" class="btn btn-primary">Submit</button>
         </form>
         <hr>
-        <div class="data"></div>
+        <div id="data"></div>
       </div>
     </div>
   <!-- JavaScript -->
@@ -46,6 +46,7 @@
     document.getElementById("button").addEventListener("click", (event) => event.preventDefault());
     var url = "https://some-random-api.ml/lyrics?title=";
     function get() {
+      document.getElementById("data").innerHTML = `Searching "${song}"…`
       var song = document.getElementById("song").value;
       if (!song) return alert("Please enter something!");
     fetch(url+song)
