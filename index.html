@@ -49,7 +49,9 @@
       var song = document.getElementById("song").value;
       if (!song) return alert("Please enter something!");
       document.getElementById("data").innerHTML = `Searching "${song}"…`
-    fetch(url+song.toLowerCase())
+    fetch(url+song.toLowerCase(), {
+        mode: 'cors'
+    })
     .then(res => res.json())
     .then(body => {
       if (body.error) return alert("No result found!");
