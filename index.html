@@ -50,7 +50,7 @@
       if (!song) return alert("Please enter something!");
       document.getElementById("data").innerHTML = `Searching "${song}"…`
     fetch(url+song.toLowerCase(), {
-        mode: 'cors'
+        mode: 'no-cors'
     })
     .then(res => res.json())
     .then(body => {
