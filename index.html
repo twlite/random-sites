@@ -30,17 +30,23 @@
     <!-- CONTENT -->
     <div class="container">
       <div class="jumbotron">
-        <h1 class="text-center">Search</h1>
-        <input type="text" id="song" placeholder="Enter song name...">
-        <button class="btn btn-primary" onclick="get(document.getElementById('song').value">Search</button>
+        <form>
+            <div class="form-group">
+                <label for="song">Song Name</label>
+                <input type="text" class="form-control" id="song" placeholder="Enter song name..." required>
+            </div>
+            <button onclick="get()" id="button" class="btn btn-primary">Submit</button>
+        </form>
         <hr>
         <div class="data"></div>
       </div>
     </div>
   <!-- JavaScript -->
   <script>
+    document.getElementById("button").addEventListener("click", (event) => event.preventDefault());
     var url = "https://some-random-api.ml/lyrics?title=";
-    function get(song) {
+    function get() {
+      var song = document.getElementById("song").value;
       if (!song) return alert("Please enter something!");
     fetch(url+song)
     .then(res => res.json())
