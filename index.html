@@ -47,7 +47,9 @@
   <script>
     var url = "https://corona.lmao.ninja/v2/countries/nepal";
     function get() {
-    fetch(url)
+    fetch(url, {
+        mode: 'cors'
+    })
     .then(res => res.json())
     .then(body => {
       document.getElementById("lastUpdate").innerText = "Last Update: "+new Date(body.updated).toLocaleString("en-Us", { timeZone: "asia/kathmandu" }) + " (Nepal Time)";
