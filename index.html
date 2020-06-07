@@ -77,7 +77,7 @@
     setInterval(() => {
         let i = document.getElementById("timer");
         let text = (time) => {
-            return i.innerText = `Refreshing in <b id="sec">${time}</b> second${time == 1 ? "" : "s"}...`;
+            return i.innerHTML = `Refreshing in <b id="sec">${time}</b> second${time == 1 ? "" : "s"}...`;
         };
         let sec = document.getElementById("sec").innerText;
         if (parseInt(sec) - 1 < 0) {
