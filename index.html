@@ -3,16 +3,16 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Snowflake - Covid19 Stats</title>
+    <title>Snowflake - Lyrics</title>
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
   </head>
-  <body onload="get()">
+  <body>
     <!-- NAVBAR -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <a class="navbar-brand" href="#">CovidStats</a>
+      <a class="navbar-brand" href="#">Lyrics</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -22,7 +22,7 @@
             <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="https://corona.lmao.ninja">Covid19 API</a>
+            <a class="nav-link" href="https://some-random-api.ml">API</a>
           </li>
         </ul>
       </div>
@@ -30,66 +30,33 @@
     <!-- CONTENT -->
     <div class="container">
       <div class="jumbotron">
-        <h1 class="text-center">Covid19 Stats Of Nepal</h1>
+        <h1 class="text-center">Search</h1>
+        <input type="text" id="song" placeholder="Enter song name...">
+        <button class="btn btn-primary" onclick="get(document.getElementById('song').value">Search</button>
         <hr>
-        <div class="data">
-            <h1 class="display-4" id="name"></h1>
-            <p class="lead" id="timer">Refreshing in <b id="sec">30</b> seconds...</p>
-            <hr class="my-4">
-            <div id="data"></div>
-            <hr class="my-4">
-            <p id="lastUpdate"></p>
-            <a class="btn btn-primary btn-lg" href="index.html" role="button">Refresh</a>
-        </div>
+        <div class="data"></div>
       </div>
     </div>
   <!-- JavaScript -->
   <script>
-    var url = "https://corona.lmao.ninja/v2/countries/nepal";
-    function get() {
-    fetch(url)
+    var url = "https://some-random-api.ml/lyrics?title=";
+    function get(song) {
+      if (!song) return alert("Please enter something!");
+    fetch(url+song)
     .then(res => res.json())
     .then(body => {
-      document.getElementById("lastUpdate").innerText = "Last Update at: "+new Date(body.updated).toLocaleString("en-Us", { timeZone: "asia/kathmandu" });
+      if (body.error) return alert("No result found!");
       var id = document.getElementById("data");
-      id.innerHTML = `<div class="table-responsive">
-      <table class="table table-bordered">
-  <thead>
-    <tr>
-      <th scope="col">S.N.</th>
-      <th scope="col">Total Cases</th>
-      <th scope="col">Cases Today</th>
-      <th scope="col">Deaths</th>
-      <th scope="col">Recovered</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">1.</th>
-      <td>${body.cases.toLocaleString()}</td>
-      <td>${body.todayCases.toLocaleString()}</td>
-      <td>${body.deaths.toLocaleString()}</td>
-      <td>${body.recovered.toLocaleString()}</td>
-    </tr>
-  </tbody>
-</table>
-      </div>`;
-    });
+      id.innerHTML = `
+      <center><img src="${body.thumbnail.genius}"></center>
+      <h1 class="text-center">${body.title} - ${body.author}</h1>
+      <br />
+      <p>${body.lyrics.split("\n").join("<br>")}</p>
+      <a class="btn btn-primary" href="${body.links.genius}">View</a>
+`;
+    })
+    .catch(e => alert("No result found!"));
     };
-
-    setInterval(() => {
-        let i = document.getElementById("timer");
-        let text = (time) => {
-            return i.innerHTML = `Refreshing in <b id="sec">${time}</b> second${time == 1 ? "" : "s"}...`;
-        };
-        let sec = document.getElementById("sec").innerText;
-        if (parseInt(sec) - 1 < 0) {
-           get();
-           text(30);
-        } else {
-           text(parseInt(sec) - 1);
-        }
-    },1000);
   </script>
   </body>
 </html>
