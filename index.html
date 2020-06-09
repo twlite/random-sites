@@ -52,37 +52,28 @@
     .then(body => {
       document.getElementById("lastUpdate").innerText = "Last Update: "+new Date(body.updated).toLocaleString("en-Us", { timeZone: "asia/kathmandu" }) + " (Nepal Time)";
       var id = document.getElementById("data");
-      id.innerHTML = `<center><img src="${body.countryInfo.flag}" class="img-fluid"></center><div class="table-responsive">
-      <table class="table table-bordered">
-  <thead>
-    <tr>
-      <th scope="col">Country</th>
-      <th scope="col">${body.country}</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">Total Cases</th>
-      <td>${body.cases.toLocaleString()}</td>
-      <th scope="row">Cases Today</th>
-      <td>${body.todayCases.toLocaleString()}</td>
-      <th scope="row">Total Deaths>/th>
-      <td>${body.deaths.toLocaleString()}</td>
-      <th scope="row">Recovered</th>
-      <td>${body.recovered.toLocaleString()}</td>
-      <th scope="row">Deaths Today</th>
-      <td>${body.todayDeaths.toLocaleString()}</td>
-      <th scope="row">Critical</th>
-      <td>${body.critical.toLocaleString()}</td>
-      <th scope="row">Active Cases</th>
-      <td>${body.active.toLocaleString()}</td>
-      <th scope="row">Tests Done</th>
-      <td>${body.tests.toLocaleString()}</td>
-      <th scope="row">Recovered Today</th>
-      <td>${body.todayRecovered.toLocaleString()}</td>
-    </tr>
-  </tbody>
-</table>
+      id.innerHTML = `<center><img src="${body.countryInfo.flag}" class="img-fluid" height="50" width="50"></center><div>
+      <br />
+      <h3>Country</h3>
+      <h5>${body.country}</h5>
+      <h3>Total Cases</h3>
+      <h5>${body.cases.toLocaleString()}</h5>
+      <h3>Cases Today</h3>
+      <h5>${body.todayCases.toLocaleString()}</h5>
+      <h3>Total Deaths>/h3>
+      <h5>${body.deaths.toLocaleString()}</h5>
+      <h3>Recovered</h3>
+      <h5>${body.recovered.toLocaleString()}</h5>
+      <h3>Deaths Today</h3>
+      <h5>${body.todayDeaths.toLocaleString()}</h5>
+      <h3>Critical</h3>
+      <h5>${body.critical.toLocaleString()}</h5>
+      <h3>Active Cases</h3>
+      <h5>${body.active.toLocaleString()}</h5>
+      <h3>Tests Done</h3>
+      <h5>${body.tests.toLocaleString()}</h5>
+      <h3>Recovered Today</h3>
+      <h5>${body.todayRecovered.toLocaleString()}</h5>
       </div>`;
     });
     };
