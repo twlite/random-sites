@@ -52,7 +52,7 @@
     .then(body => {
       document.getElementById("lastUpdate").innerText = "Last Update: "+new Date(body.updated).toLocaleString("en-Us", { timeZone: "asia/kathmandu" }) + " (Nepal Time)";
       var id = document.getElementById("data");
-      id.innerHTML = `<center><img src="${body.countryInfo.flag}" class="img-fluid" height="100" width="100"></center><div>
+      id.innerHTML = `<center><img src="${body.countryInfo.flag}" class="img-fluid" height="100" width="100"></center><div><br><hr>
       <br />
       <h3>Country</h3>
       <h5>${body.country}</h5>
