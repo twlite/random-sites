@@ -85,6 +85,7 @@
         };
         let sec = document.getElementById("sec").innerText;
         if (parseInt(sec) - 1 < 0) {
+           setTimeout(document.getElementById("data").innerHTML = "Refreshing...", 1500);
            get();
            text(30);
         } else {
