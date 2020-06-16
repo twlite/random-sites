@@ -5,7 +5,7 @@ check it **[here](https://covid-nepal.netlify.app)**
 # Made With
 - HTML
 - CSS
-- Bootstrap
+- JavaScript
 
 # Made By
 Snowflake107
