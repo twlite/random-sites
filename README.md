@@ -1,6 +1,6 @@
 # Discord YTDL Core
 
-Check it [Here](https://discord-ytdl-core.netlify.app "https://discord-ytdl-core.netlify.app")
+Check it [Here](https://ytdl.snowflakedev.xyz "https://ytdl.snowflakedev.xyz")
 
 # Made With
 - HTML
